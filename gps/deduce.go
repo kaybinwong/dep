@@ -683,8 +683,9 @@ func (dc *deductionCoordinator) deduceKnownPaths(path string) (pathDeduction, er
 	// Try mirrors
 	pd, ok := dc.deduceMirrorPaths(path, u)
 	if ok {
+		return pd, nil
+	}
 	
-
 	// Next, try the vcs extension-based (infix) matcher
 	exm := vcsExtensionDeducer{regexp: vcsExtensionRegex}
 	if root, err := exm.deduceRoot(path); err == nil {
